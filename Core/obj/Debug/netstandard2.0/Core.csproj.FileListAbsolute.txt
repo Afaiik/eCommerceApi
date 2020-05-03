@@ -1,0 +1,8 @@
+D:\01 - Programacion y Hacking\05 - NET Core\WebApiHackathon\Core\bin\Debug\netstandard2.0\Core.deps.json
+D:\01 - Programacion y Hacking\05 - NET Core\WebApiHackathon\Core\bin\Debug\netstandard2.0\Core.dll
+D:\01 - Programacion y Hacking\05 - NET Core\WebApiHackathon\Core\bin\Debug\netstandard2.0\Core.pdb
+D:\01 - Programacion y Hacking\05 - NET Core\WebApiHackathon\Core\obj\Debug\netstandard2.0\Core.AssemblyInfoInputs.cache
+D:\01 - Programacion y Hacking\05 - NET Core\WebApiHackathon\Core\obj\Debug\netstandard2.0\Core.AssemblyInfo.cs
+D:\01 - Programacion y Hacking\05 - NET Core\WebApiHackathon\Core\obj\Debug\netstandard2.0\Core.dll
+D:\01 - Programacion y Hacking\05 - NET Core\WebApiHackathon\Core\obj\Debug\netstandard2.0\Core.pdb
+D:\01 - Programacion y Hacking\05 - NET Core\WebApiHackathon\Core\obj\Debug\netstandard2.0\Core.csprojAssemblyReference.cache
