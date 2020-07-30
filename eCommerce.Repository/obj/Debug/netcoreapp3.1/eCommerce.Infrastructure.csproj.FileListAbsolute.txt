@@ -1,0 +1,14 @@
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\bin\Debug\netcoreapp3.1\eCommerce.Infrastructure.deps.json
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\bin\Debug\netcoreapp3.1\eCommerce.Infrastructure.dll
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\bin\Debug\netcoreapp3.1\eCommerce.Infrastructure.pdb
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\bin\Debug\netcoreapp3.1\eCommerce.Core.dll
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\bin\Debug\netcoreapp3.1\eCommerce.Services.dll
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\bin\Debug\netcoreapp3.1\eCommerce.Core.pdb
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\bin\Debug\netcoreapp3.1\eCommerce.Services.pdb
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\obj\Debug\netcoreapp3.1\eCommerce.Infrastructure.csprojAssemblyReference.cache
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\obj\Debug\netcoreapp3.1\eCommerce.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\obj\Debug\netcoreapp3.1\eCommerce.Infrastructure.AssemblyInfo.cs
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\obj\Debug\netcoreapp3.1\eCommerce.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\obj\Debug\netcoreapp3.1\eCommerce.Infrastructure.csproj.CopyComplete
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\obj\Debug\netcoreapp3.1\eCommerce.Infrastructure.dll
+C:\Users\ecettoir\source\repos\eCommerceApi\eCommerce.Repository\obj\Debug\netcoreapp3.1\eCommerce.Infrastructure.pdb

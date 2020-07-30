@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using eCommerce.Infrastructure.Data;
 
 namespace WebAPI
 {
@@ -29,8 +29,8 @@ namespace WebAPI
         {
             //services.AddDbContext<ObjectTestContext>(opt =>
             //   opt.UseSqlServer("DefaultConnection"));
-            services.AddDbContext<ObjectTestContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("eCommerceConnection")));
 
             services.AddControllers();
         }
@@ -43,7 +43,7 @@ namespace WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();  TODO: DESCOMENTAR ESTA LINEA PARA USAR SSH
 
             app.UseRouting();
 
