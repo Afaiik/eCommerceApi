@@ -2691,7 +2691,7 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Core/1.0.0": {
+      "eCommerce.Core/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -2699,10 +2699,37 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.3"
         },
         "compile": {
-          "bin/placeholder/Core.dll": {}
+          "bin/placeholder/eCommerce.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Core.dll": {}
+          "bin/placeholder/eCommerce.Core.dll": {}
+        }
+      },
+      "eCommerce.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "eCommerce.Core": "1.0.0",
+          "eCommerce.Services": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/eCommerce.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/eCommerce.Infrastructure.dll": {}
+        }
+      },
+      "eCommerce.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "eCommerce.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/eCommerce.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/eCommerce.Services.dll": {}
         }
       }
     }
@@ -8614,53 +8641,71 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Core/1.0.0": {
+    "eCommerce.Core/1.0.0": {
       "type": "project",
-      "path": "../Core/Core.csproj",
-      "msbuildProject": "../Core/Core.csproj"
+      "path": "../Core/eCommerce.Core.csproj",
+      "msbuildProject": "../Core/eCommerce.Core.csproj"
+    },
+    "eCommerce.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../eCommerce.Repository/eCommerce.Infrastructure.csproj",
+      "msbuildProject": "../eCommerce.Repository/eCommerce.Infrastructure.csproj"
+    },
+    "eCommerce.Services/1.0.0": {
+      "type": "project",
+      "path": "../eCommerce.Services/eCommerce.Services.csproj",
+      "msbuildProject": "../eCommerce.Services/eCommerce.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Core >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.2",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.2",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.2"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.2",
+      "eCommerce.Core >= 1.0.0",
+      "eCommerce.Infrastructure >= 1.0.0",
+      "eCommerce.Services >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Afaik\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\ecettoir\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\01 - Programacion y Hacking\\05 - NET Core\\WebApiHackathon\\WebAPI\\WebAPI.csproj",
-      "projectName": "WebAPI",
-      "projectPath": "D:\\01 - Programacion y Hacking\\05 - NET Core\\WebApiHackathon\\WebAPI\\WebAPI.csproj",
-      "packagesPath": "C:\\Users\\Afaik\\.nuget\\packages\\",
-      "outputPath": "D:\\01 - Programacion y Hacking\\05 - NET Core\\WebApiHackathon\\WebAPI\\obj\\",
+      "projectUniqueName": "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\WebAPI\\eCommerce.Api.csproj",
+      "projectName": "eCommerce.Api",
+      "projectPath": "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\WebAPI\\eCommerce.Api.csproj",
+      "packagesPath": "C:\\Users\\ecettoir\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Afaik\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\ecettoir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://emmsa-nugetfeed/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\01 - Programacion y Hacking\\05 - NET Core\\WebApiHackathon\\Core\\Core.csproj": {
-              "projectPath": "D:\\01 - Programacion y Hacking\\05 - NET Core\\WebApiHackathon\\Core\\Core.csproj"
+            "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\Core\\eCommerce.Core.csproj": {
+              "projectPath": "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\Core\\eCommerce.Core.csproj"
+            },
+            "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\eCommerce.Repository\\eCommerce.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\eCommerce.Repository\\eCommerce.Infrastructure.csproj"
+            },
+            "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\eCommerce.Services\\eCommerce.Services.csproj": {
+              "projectPath": "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\eCommerce.Services\\eCommerce.Services.csproj"
             }
           }
         }
@@ -8699,6 +8744,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.2, 3.1.2]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -8707,7 +8758,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
