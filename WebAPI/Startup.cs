@@ -17,6 +17,8 @@ namespace WebAPI
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,8 +29,19 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<ObjectTestContext>(opt =>
-            //   opt.UseSqlServer("DefaultConnection"));
+            
+            //Cors Configuration Reference
+            //https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-3.1
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                              builder =>
+                              {
+                                  builder.WithOrigins("http://localhost",
+                                                        "http://localhost:3000");
+                              });
+            }
+            );
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("eCommerceConnection")));
 
@@ -44,8 +57,11 @@ namespace WebAPI
             }
 
             //app.UseHttpsRedirection();  TODO: DESCOMENTAR ESTA LINEA PARA USAR SSH
-
+            
             app.UseRouting();
+
+            //The call to UseCors must be placed after UseRouting, but before UseAuthorization
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 

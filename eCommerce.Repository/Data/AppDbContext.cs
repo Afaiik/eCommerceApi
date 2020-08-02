@@ -14,5 +14,10 @@ namespace eCommerce.Infrastructure.Data
 
         public DbSet<User> User { get; set; }
 
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        //}
+
     }
 }
