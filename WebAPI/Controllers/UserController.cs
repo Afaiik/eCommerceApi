@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Core.Entities;
 using eCommerce.Infrastructure.Data;
+using eCommerce.Infrastructure.Shared;
 
 namespace eCommerce.Api.Controllers
 {
@@ -25,7 +26,9 @@ namespace eCommerce.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.User.ToListAsync();
+            //return await _context.User.ToListAsync();
+            var userRepo = new GenericRepository<User>(_context);
+            return userRepo.Get().ToList();
         }
 
         // GET: api/User/5

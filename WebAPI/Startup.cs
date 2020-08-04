@@ -37,13 +37,16 @@ namespace WebAPI
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                               builder =>
                               {
-                                  builder.WithOrigins("http://localhost",
-                                                        "http://localhost:3000");
+                                  builder.WithOrigins("http://localhost:3000"); //Frontend URL
                               });
             }
             );
+
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("eCommerceConnection")));
+
+            //services.AddScoped<IService, ServiceImplementation>();
+            //services.AddScoped<DbContext>(x => x.GetService<AppDbContext>());
 
             services.AddControllers();
         }

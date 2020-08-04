@@ -8,20 +8,25 @@ namespace eCommerce.Infrastructure.Data
 {
     public class UnitOfWork : IDisposable
     {
-        private AppDbContext context { get; }
+        private AppDbContext _context;
         private GenericRepository<User> userRepository; 
         
-        public GenericRepository<User> GameRepository
+        public UnitOfWork(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public GenericRepository<User> UserRepository
         {
             get
             {
-                return this.userRepository ?? new GenericRepository<User>(context);
+                return this.userRepository ?? new GenericRepository<User>(_context);
             }
         }
 
         public void SaveChanges()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         private bool disposed = false; 
@@ -32,7 +37,7 @@ namespace eCommerce.Infrastructure.Data
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    _context.Dispose();
                 }
             }
             this.disposed = true;
