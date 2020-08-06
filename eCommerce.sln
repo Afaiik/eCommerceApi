@@ -7,9 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Core", "Core\eCom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Api", "WebAPI\eCommerce.Api.csproj", "{2432F581-E937-4BFF-8795-22021DD41032}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.Infrastructure", "eCommerce.Repository\eCommerce.Infrastructure.csproj", "{4FB3BB7A-176B-4461-810B-8EC4D39F5320}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Infrastructure", "eCommerce.Repository\eCommerce.Infrastructure.csproj", "{4FB3BB7A-176B-4461-810B-8EC4D39F5320}"
+	ProjectSection(ProjectDependencies) = postProject
+		{18C31D33-D21D-4C58-89E2-578427322747} = {18C31D33-D21D-4C58-89E2-578427322747}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.Services", "eCommerce.Services\eCommerce.Services.csproj", "{18C31D33-D21D-4C58-89E2-578427322747}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.Services", "eCommerce.Services\eCommerce.Services.csproj", "{18C31D33-D21D-4C58-89E2-578427322747}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

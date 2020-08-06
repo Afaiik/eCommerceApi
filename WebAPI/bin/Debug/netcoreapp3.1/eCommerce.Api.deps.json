@@ -2318,8 +2318,7 @@
       },
       "eCommerce.Infrastructure/1.0.0": {
         "dependencies": {
-          "eCommerce.Core": "1.0.0",
-          "eCommerce.Services": "1.0.0"
+          "eCommerce.Core": "1.0.0"
         },
         "runtime": {
           "eCommerce.Infrastructure.dll": {}

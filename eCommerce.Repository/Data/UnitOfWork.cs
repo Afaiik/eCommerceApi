@@ -1,27 +1,28 @@
 ﻿using Core.Entities;
-using eCommerce.Infrastructure.Shared;
+using eCommerce.Core.Interfaces.Repositories;
+using eCommerce.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace eCommerce.Infrastructure.Data
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
-        private AppDbContext context { get; }
-        private GenericRepository<User> userRepository; 
+        private AppDbContext _context;
+        private UserRepository _userRepository;
         
-        public GenericRepository<User> GameRepository
+        public UnitOfWork(AppDbContext context)
         {
-            get
-            {
-                return this.userRepository ?? new GenericRepository<User>(context);
-            }
+            _context = context;
         }
+
+        public IUserRepository Users => _userRepository = _userRepository ?? new UserRepository(_context);
 
         public void SaveChanges()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         private bool disposed = false; 
@@ -32,7 +33,7 @@ namespace eCommerce.Infrastructure.Data
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    _context.Dispose();
                 }
             }
             this.disposed = true;
@@ -42,5 +43,11 @@ namespace eCommerce.Infrastructure.Data
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public async Task<int> CommitAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
+
     }
 }

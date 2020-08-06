@@ -12,6 +12,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using eCommerce.Infrastructure.Data;
+using eCommerce.Core.Interfaces.Repositories;
+using eCommerce.Infrastructure.Repositories;
+using Core.Entities;
+using eCommerce.Services;
+using eCommerce.Core.Interfaces.Services;
 
 namespace WebAPI
 {
@@ -37,13 +42,27 @@ namespace WebAPI
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                               builder =>
                               {
-                                  builder.WithOrigins("http://localhost",
-                                                        "http://localhost:3000");
+                                  builder.WithOrigins("http://localhost:3000"); //Frontend URL
                               });
             }
             );
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+            
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+
+            services.AddScoped(typeof(IUserService), typeof(UserService));
+
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("eCommerceConnection")));
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("eCommerceConnection"),
+                //database-connection-resiliency
+                sqlServerOptionsAction: sqlOptions =>
+                 {
+                     sqlOptions.EnableRetryOnFailure();
+                 });
+            });
 
             services.AddControllers();
         }

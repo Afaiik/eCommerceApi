@@ -100,9 +100,6 @@
             "projectReferences": {
               "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\Core\\eCommerce.Core.csproj": {
                 "projectPath": "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\Core\\eCommerce.Core.csproj"
-              },
-              "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\eCommerce.Services\\eCommerce.Services.csproj": {
-                "projectPath": "C:\\Users\\ecettoir\\source\\repos\\eCommerceApi\\eCommerce.Services\\eCommerce.Services.csproj"
               }
             }
           }
