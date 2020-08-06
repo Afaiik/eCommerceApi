@@ -4,10 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Core.Entities;
-using eCommerce.Infrastructure.Data;
-using eCommerce.Infrastructure.Shared;
+using eCommerce.Core.Interfaces.Services;
 
 namespace eCommerce.Api.Controllers
 {
@@ -15,11 +13,11 @@ namespace eCommerce.Api.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IUserService _userService;
 
-        public UserController(AppDbContext context)
+        public UserController(IUserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
         // GET: api/User
@@ -27,87 +25,98 @@ namespace eCommerce.Api.Controllers
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             //return await _context.User.ToListAsync();
-            var userRepo = new GenericRepository<User>(_context);
-            return userRepo.Get().ToList();
+            //var userRepo = new GenericRepository<User>(_context);
+
+            return Ok(_userService.Get());
         }
+        
+        //// GET: api/ActiveUser DEFINIR ENDPOINT
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<User>>> GetActiveUsers()
+        //{
+        //    //return await _context.User.ToListAsync();
+        //    //var userRepo = new GenericRepository<User>(_context);
 
-        // GET: api/User/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
-        {
-            var user = await _context.User.FindAsync(id);
+        //    return Ok(await _userService.GetActiveUsers());
+        //}
 
-            if (user == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/User/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<User>> GetUser(int id)
+        //{
+        //    var user = await _context.User.FindAsync(id);
 
-            return user;
-        }
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-        // PUT: api/User/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
-        {
-            if (id != user.Id)
-            {
-                return BadRequest();
-            }
+        //    return user;
+        //}
 
-            _context.Entry(user).State = EntityState.Modified;
+        //// PUT: api/User/5
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
+        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutUser(int id, User user)
+        //{
+        //    if (id != user.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    _context.Entry(user).State = EntityState.Modified;
 
-            return NoContent();
-        }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!UserExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-        // POST: api/User
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
-        {
-            _context.User.Add(user);
-            await _context.SaveChangesAsync();
+        //    return NoContent();
+        //}
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
-        }
+        //// POST: api/User
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
+        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        //[HttpPost]
+        //public async Task<ActionResult<User>> PostUser(User user)
+        //{
+        //    _context.User.Add(user);
+        //    await _context.SaveChangesAsync();
 
-        // DELETE: api/User/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<User>> DeleteUser(int id)
-        {
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+        //    return CreatedAtAction("GetUser", new { id = user.Id }, user);
+        //}
 
-            _context.User.Remove(user);
-            await _context.SaveChangesAsync();
+        //// DELETE: api/User/5
+        //[HttpDelete("{id}")]
+        //public async Task<ActionResult<User>> DeleteUser(int id)
+        //{
+        //    var user = await _context.User.FindAsync(id);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return user;
-        }
+        //    _context.User.Remove(user);
+        //    await _context.SaveChangesAsync();
 
-        private bool UserExists(int id)
-        {
-            return _context.User.Any(e => e.Id == id);
-        }
+        //    return user;
+        //}
+
+        //private bool UserExists(int id)
+        //{
+        //    return _context.User.Any(e => e.Id == id);
+        //}
     }
 }

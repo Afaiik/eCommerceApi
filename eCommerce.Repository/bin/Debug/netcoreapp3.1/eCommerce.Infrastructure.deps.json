@@ -8,8 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "eCommerce.Infrastructure/1.0.0": {
         "dependencies": {
-          "eCommerce.Core": "1.0.0",
-          "eCommerce.Services": "1.0.0"
+          "eCommerce.Core": "1.0.0"
         },
         "runtime": {
           "eCommerce.Infrastructure.dll": {}
@@ -854,14 +853,6 @@
         "runtime": {
           "eCommerce.Core.dll": {}
         }
-      },
-      "eCommerce.Services/1.0.0": {
-        "dependencies": {
-          "eCommerce.Core": "1.0.0"
-        },
-        "runtime": {
-          "eCommerce.Services.dll": {}
-        }
       }
     }
   },
@@ -1481,11 +1472,6 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "eCommerce.Core/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "eCommerce.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

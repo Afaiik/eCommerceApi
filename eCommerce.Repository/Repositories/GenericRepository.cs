@@ -1,4 +1,5 @@
-﻿using eCommerce.Infrastructure.Data;
+﻿using eCommerce.Core.Interfaces.Repositories;
+using eCommerce.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,9 +7,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace eCommerce.Infrastructure.Shared
+namespace eCommerce.Infrastructure.Repositories
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
 
         internal AppDbContext context;
