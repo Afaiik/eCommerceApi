@@ -1,0 +1,36 @@
+
+:root {
+  /*Colores de la APP*/
+  --light-main-color:#FFFFFF;
+  --dark-main-color :#0C0C0C;
+  --light-bkg-white :#F7F7F7;
+  --light-gray      :#DEDEDE;
+  --dark-gray       :#4C4C4C;
+  --info-text       :#3039CC;
+  --success-text    :#70D974;
+  --danger-text     :#CE5555;
+
+  --primary-font : 'Poppins', sans-serif;
+
+  font-family: var(--primary-font);
+  background-color: var(--light-bkg-white);
+  margin: 0;
+}
+
+#root {
+  font-family: var(--primary-font);
+  background-color: var(--light-bkg-white);
+}
+
+a{
+  color: var(--dark-main-color);
+}
+
+a:active{
+  color: var(--dark-gray);
+}
+
+a:visited{
+  color: var(--dark-main-color);
+}
+
