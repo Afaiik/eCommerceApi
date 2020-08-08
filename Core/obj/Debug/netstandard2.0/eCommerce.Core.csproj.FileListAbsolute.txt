@@ -1,9 +1,0 @@
-C:\Users\ecettoir\source\repos\eCommerceApi\Core\bin\Debug\netstandard2.0\eCommerce.Core.deps.json
-C:\Users\ecettoir\source\repos\eCommerceApi\Core\bin\Debug\netstandard2.0\eCommerce.Core.dll
-C:\Users\ecettoir\source\repos\eCommerceApi\Core\bin\Debug\netstandard2.0\eCommerce.Core.pdb
-C:\Users\ecettoir\source\repos\eCommerceApi\Core\obj\Debug\netstandard2.0\eCommerce.Core.csprojAssemblyReference.cache
-C:\Users\ecettoir\source\repos\eCommerceApi\Core\obj\Debug\netstandard2.0\eCommerce.Core.AssemblyInfoInputs.cache
-C:\Users\ecettoir\source\repos\eCommerceApi\Core\obj\Debug\netstandard2.0\eCommerce.Core.AssemblyInfo.cs
-C:\Users\ecettoir\source\repos\eCommerceApi\Core\obj\Debug\netstandard2.0\eCommerce.Core.csproj.CoreCompileInputs.cache
-C:\Users\ecettoir\source\repos\eCommerceApi\Core\obj\Debug\netstandard2.0\eCommerce.Core.dll
-C:\Users\ecettoir\source\repos\eCommerceApi\Core\obj\Debug\netstandard2.0\eCommerce.Core.pdb
