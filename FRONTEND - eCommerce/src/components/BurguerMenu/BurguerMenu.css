@@ -1,0 +1,81 @@
+/* Position and sizing of burger button */
+.bm-burger-button {
+    position: fixed;
+    width: 26px;
+    height: 20px;
+    left: 26px;
+    top: 26px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+    background: var(--dark-main-color);
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+    background: var(--dark-main-color);
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+    height: 34px;
+    width: 34px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+    background: var(--dark-main-color);
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+    background: var(--light-main-color);
+    padding: 0;
+    font-size: 1.6em;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+    color: var(--dark-main-color);
+    padding: 0;
+}
+
+/* Individual item */
+.bm-item {
+    display: block;
+    padding: 0.4em;
+    text-decoration: none;
+    border-bottom: var(--dark-main-color) 1px solid;
+}
+
+.menu-item .menu-item:active .menu-item:visited .menu-item:link {
+    color: var(--dark-main-color);
+}
+
+.title-container-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+#title-home {
+    width: 30%;
+    margin: 0;
+}
+  
+#logo-home {
+    width: 20%;
+    margin: 0;
+}
