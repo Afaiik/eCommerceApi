@@ -1,4 +1,4 @@
-.button {
+.confirmation-button {
     display: block;
     background-color: var(--dark-main-color);
     color: var(--light-main-color);
@@ -14,7 +14,11 @@
     font-style: normal;    
 }
 
-.button-text {
+.confirmation-button:hover {
+    background-color: var(--dark-gray);
+}
+
+.confirmation-button-text {
     margin: auto;
     line-height: 42px;
 

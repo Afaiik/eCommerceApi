@@ -1,8 +1,9 @@
-.header {
+.header { 
     position: fixed;
     height: 72px;
     width: 100%;
     background-color: var(--light-bkg-white);
+    z-index: 1;
 }
 
 #title-header-container {

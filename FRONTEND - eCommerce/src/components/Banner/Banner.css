@@ -1,0 +1,23 @@
+.carousel-root .carousel .slide .control-arrow {
+    z-index: 1;
+}
+
+.banner-img {
+    min-height: 30vh;
+    max-height: 30vh;
+}
+
+@supports(object-fit: cover){
+    .slide .banner-img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .banner-img {
+        min-height: 45vh;
+        max-height: 45vh;
+    }
+}

@@ -3,8 +3,8 @@ import 'components/Buttons/ConfirmationButton.css'
 
 const ConfirmationButton = ({text}) => {
     return (  
-        <button className="button">
-            <p className="button-text">{text}</p>
+        <button className="confirmation-button">
+            <p className="confirmation-button-text">{text}</p>
         </button>
     )
 }
