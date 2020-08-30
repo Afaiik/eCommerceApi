@@ -14,5 +14,13 @@ namespace eCommerce.Core.Interfaces.Services
         IEnumerable<User> Get(Expression<Func<User, bool>> filter = null,
                                         Func<IQueryable<User>, IOrderedQueryable<User>> orderBy = null,
                                         string includeProperties = "");
+
+        User GetById(int id);
+
+        Task Update(User user);
+
+        Task Insert(User user);
+
+        Task<User> Delete(int id);
     }
 }

@@ -44,7 +44,7 @@ namespace eCommerce.Infrastructure.Data
             GC.SuppressFinalize(this);
         }
 
-        public async Task<int> CommitAsync()
+        public async Task<int> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync();
         }

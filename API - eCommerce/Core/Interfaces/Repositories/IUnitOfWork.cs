@@ -9,7 +9,7 @@ namespace eCommerce.Core.Interfaces.Repositories
     {
         IUserRepository Users { get; }
 
-        Task<int> CommitAsync();
+        Task<int> SaveChangesAsync();
 
     }
 }

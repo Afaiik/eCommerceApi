@@ -17,6 +17,9 @@ using eCommerce.Infrastructure.Repositories;
 using Core.Entities;
 using eCommerce.Services;
 using eCommerce.Core.Interfaces.Services;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
+using AutoMapper;
 
 namespace WebAPI
 {
@@ -46,23 +49,37 @@ namespace WebAPI
                               });
             }
             );
-
+            #region Infrastructure
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+            
+            #endregion Infrastructure
 
+            #region Services
+            
             services.AddScoped(typeof(IUserService), typeof(UserService));
+            
+            #endregion Services
 
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("eCommerceConnection"),
                 //database-connection-resiliency
                 sqlServerOptionsAction: sqlOptions =>
-                 {
-                     sqlOptions.EnableRetryOnFailure();
-                 });
+                {
+                    sqlOptions.EnableRetryOnFailure();
+                });
             });
+
+            //Swagger
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "eCommerce Restfull API", Version = "v1" });
+            });
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
         }
@@ -75,7 +92,7 @@ namespace WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseHttpsRedirection();  TODO: DESCOMENTAR ESTA LINEA PARA USAR SSH
+            app.UseHttpsRedirection();
             
             app.UseRouting();
 
@@ -87,6 +104,13 @@ namespace WebAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            //Swagger
+            app.UseSwagger(); app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = "";
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "eCommerce v1");
             });
         }
     }

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Core.Entities;
 using eCommerce.Core.Interfaces.Services;
+using AutoMapper;
+using eCommerce.Api.Models;
 
 namespace eCommerce.Api.Controllers
 {
@@ -14,22 +16,24 @@ namespace eCommerce.Api.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IMapper mapper)
         {
             _userService = userService;
+            _mapper = mapper;
         }
 
         // GET: api/User
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            //return await _context.User.ToListAsync();
-            //var userRepo = new GenericRepository<User>(_context);
+            var users = _userService.Get();
+            var ret = _mapper.Map<IEnumerable<User>, IEnumerable<UserModel>>(users);
 
-            return Ok(_userService.Get());
+            return Ok(ret);
         }
-        
+
         //// GET: api/ActiveUser DEFINIR ENDPOINT
         //[HttpGet]
         //public async Task<ActionResult<IEnumerable<User>>> GetActiveUsers()
@@ -40,83 +44,62 @@ namespace eCommerce.Api.Controllers
         //    return Ok(await _userService.GetActiveUsers());
         //}
 
-        //// GET: api/User/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<User>> GetUser(int id)
-        //{
-        //    var user = await _context.User.FindAsync(id);
+        // GET: api/User/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUser(int id)
+        {
+            var user = _userService.GetById(id);
 
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (user == null)
+            {
+                return NotFound();
+            }
 
-        //    return user;
-        //}
+            return Ok(user);
+        }
 
-        //// PUT: api/User/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
-        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutUser(int id, User user)
-        //{
-        //    if (id != user.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        // PUT: api/User/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUser(int id, User user)
+        {
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
 
-        //    _context.Entry(user).State = EntityState.Modified;
+            try
+            {
+                await _userService.Update(user);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!UserExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            return NoContent();
+        }
 
-        //    return NoContent();
-        //}
+        // POST: api/User
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPost]
+        public async Task<ActionResult<User>> PostUser(User user)
+        {
+            await _userService.Insert(user);
 
-        //// POST: api/User
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
-        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPost]
-        //public async Task<ActionResult<User>> PostUser(User user)
-        //{
-        //    _context.User.Add(user);
-        //    await _context.SaveChangesAsync();
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+        }
 
-        //    return CreatedAtAction("GetUser", new { id = user.Id }, user);
-        //}
+        // DELETE: api/User/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<User>> DeleteUser(int id)
+        {
+            User user = await _userService.Delete(id);
 
-        //// DELETE: api/User/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<User>> DeleteUser(int id)
-        //{
-        //    var user = await _context.User.FindAsync(id);
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
+            return user;
+        }
 
-        //    _context.User.Remove(user);
-        //    await _context.SaveChangesAsync();
-
-        //    return user;
-        //}
-
-        //private bool UserExists(int id)
-        //{
-        //    return _context.User.Any(e => e.Id == id);
-        //}
     }
 }
