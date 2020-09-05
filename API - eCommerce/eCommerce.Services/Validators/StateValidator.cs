@@ -6,11 +6,11 @@ using System.Text;
 
 namespace eCommerce.Services.Validators
 {
-    public class UserValidator : AbstractValidator<User>
+    public class StateValidator : AbstractValidator<State>
     {
-        public UserValidator()
+        public StateValidator()
         {
-            RuleFor(x => x.Email).Must(x => x.Contains("@")).WithMessage("Email is not valid. Lack of '@'.");
+
         }
     }
 }

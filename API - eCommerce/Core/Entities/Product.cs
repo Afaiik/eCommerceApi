@@ -3,28 +3,29 @@ using System.Collections.Generic;
 
 namespace eCommerce.Core.Entities
 {
-    public partial class User
+    public partial class Product
     {
-        public User()
+        public Product()
         {
+            Discount = new HashSet<Discount>();
             Log = new HashSet<Log>();
-            Order = new HashSet<Order>();
+            ProductDetail = new HashSet<ProductDetail>();
+            ProductResource = new HashSet<ProductResource>();
             Review = new HashSet<Review>();
         }
 
         public int Id { get; set; }
-        public string Email { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public int UserTypeId { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
         public int StateId { get; set; }
         public int CompanyId { get; set; }
 
         public virtual Company Company { get; set; }
         public virtual State State { get; set; }
-        public virtual UserType UserType { get; set; }
+        public virtual ICollection<Discount> Discount { get; set; }
         public virtual ICollection<Log> Log { get; set; }
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<ProductDetail> ProductDetail { get; set; }
+        public virtual ICollection<ProductResource> ProductResource { get; set; }
         public virtual ICollection<Review> Review { get; set; }
     }
 }

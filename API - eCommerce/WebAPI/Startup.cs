@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using eCommerce.Infrastructure.Data;
 using eCommerce.Core.Interfaces.Repositories;
 using eCommerce.Infrastructure.Repositories;
-using Core.Entities;
+using eCommerce.Core.Entities;
 using eCommerce.Services;
 using eCommerce.Core.Interfaces.Services;
 using Microsoft.OpenApi.Models;
@@ -54,12 +54,14 @@ namespace WebAPI
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+            services.AddScoped(typeof(IStateRepository), typeof(StateRepository));
             
             #endregion Infrastructure
 
             #region Services
             
             services.AddScoped(typeof(IUserService), typeof(UserService));
+            services.AddScoped(typeof(IStateService), typeof(StateService));
             
             #endregion Services
 
@@ -107,7 +109,9 @@ namespace WebAPI
             });
 
             //Swagger
-            app.UseSwagger(); app.UseSwaggerUI(c =>
+            app.UseSwagger(); 
+
+            app.UseSwaggerUI(c =>
             {
                 c.RoutePrefix = "";
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "eCommerce v1");

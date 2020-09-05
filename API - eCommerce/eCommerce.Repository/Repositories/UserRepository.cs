@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using eCommerce.Core.Entities;
 using eCommerce.Core.Interfaces.Repositories;
 using eCommerce.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +24,21 @@ namespace eCommerce.Infrastructure.Repositories
             query = query.Where(x => x.Id > 1);
 
             return await query.ToListAsync();
+        }
+
+        public async Task<User> GetUserByEmailOrUsername(string username, string email)
+        {
+            var query = context.User.AsQueryable();
+            if(!string.IsNullOrEmpty(username))
+                query = query.Where(x =>
+                    x.Username.ToLower().Equals(username.Trim().ToLower())
+                );
+            if (!string.IsNullOrEmpty(email))
+                query = query.Where(x =>
+                    x.Email.ToLower().Equals(email.Trim().ToLower())
+                );
+
+            return await query.FirstOrDefaultAsync();
         }
     }
 }

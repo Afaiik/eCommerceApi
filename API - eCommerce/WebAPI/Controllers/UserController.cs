@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Core.Entities;
+using eCommerce.Core.Entities;
 using eCommerce.Core.Interfaces.Services;
 using AutoMapper;
 using eCommerce.Api.Models;
@@ -26,29 +26,42 @@ namespace eCommerce.Api.Controllers
 
         // GET: api/User
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
         {
-            var users = _userService.Get();
+            var users = await _userService.Get();
             var ret = _mapper.Map<IEnumerable<User>, IEnumerable<UserModel>>(users);
 
             return Ok(ret);
         }
 
-        //// GET: api/ActiveUser DEFINIR ENDPOINT
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<User>>> GetActiveUsers()
-        //{
-        //    //return await _context.User.ToListAsync();
-        //    //var userRepo = new GenericRepository<User>(_context);
+        // GET: api/ActiveUser
+        [HttpGet("/api/ActiveUser")]
+        public async Task<ActionResult<IEnumerable<User>>> GetActiveUsers()
+        {
+            return Ok(await _userService.GetActiveUsers());
+        }
+        
+        // GET: api/RequestLogin
+        [HttpGet("/api/RequestLogin")]
+        public async Task<ActionResult<bool>> RequestLogin(string userName, string email, string password)
+        {
+            if((string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(email)) || string.IsNullOrEmpty(password))
+                return BadRequest();
 
-        //    return Ok(await _userService.GetActiveUsers());
-        //}
+            var user = await _userService.GetUserByEmailOrUsername(userName, email);
+            bool loginOk = false;
+            
+            if (user != null && user.Password.Equals(password))
+                loginOk = true;
+            
+            return Ok(loginOk);
+        }
 
         // GET: api/User/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = _userService.GetById(id);
+            var user = await _userService.GetById(id);
 
             if (user == null)
             {
@@ -96,7 +109,9 @@ namespace eCommerce.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<User>> DeleteUser(int id)
         {
-            User user = await _userService.Delete(id);
+            User user = await _userService.GetById(id);
+            if(user != null)
+                await _userService.Delete(id);
 
             return user;
         }
