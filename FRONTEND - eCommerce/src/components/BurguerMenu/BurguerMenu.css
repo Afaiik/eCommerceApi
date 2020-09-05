@@ -33,7 +33,7 @@ Sidebar wrapper styles
 Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
 */
 .bm-menu-wrap {
-    position: fixed;
+    position: sticky;
     height: 100%;
 }
 
@@ -48,6 +48,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-item-list {
     color: var(--dark-main-color);
     padding: 0;
+    z-index: 2;
 }
 
 /* Individual item */
@@ -58,24 +59,104 @@ Note: Beware of modifying this element as it can break the animations - you shou
     border-bottom: var(--dark-main-color) 1px solid;
 }
 
+.bm-item:hover {
+    background-color: var(--light-gray);
+}
+
 .menu-item .menu-item:active .menu-item:visited .menu-item:link {
     color: var(--dark-main-color);
 }
 
 .title-container-home {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: row;
     align-items: center;
-    vertical-align: middle;
     justify-content: center;
+    border-bottom: none;
+    margin-bottom: -5%;
+}
+
+.title-container-home:focus, .bm-item:focus {
+    outline: none;
+}
+
+.title-col-home {
+    width: 55%;
+    text-align: end;
+}
+
+.logo-col-home {
+    width: 45%;
+    text-align: start;
 }
 
 #title-home {
-    width: 30%;
+    width: 55%;
     margin: 0;
 }
   
 #logo-home {
-    width: 20%;
+    width: 45%;
     margin: 0;
 }
+
+#user-item {
+    display: flex !important;
+    flex-direction: row;
+}
+
+#menu-user-icon {
+    margin-left: 5%;
+    font-size: 38px;
+    align-self: center;
+}
+
+#menu-text {
+    line-height: 0.6em;
+    margin-left: 10%;
+}
+
+#menu-user-name {
+    font-size: 0.9em;
+    font-weight: 800;
+}
+
+#menu-user-email::before { 
+    content: '\a'; 
+    white-space: pre;
+}
+
+#menu-user-email {
+    font-size: 0.5em;
+    font-weight: 400;
+}
+
+#menu-settings-icon {
+    flex: 1;
+    align-self: center;
+    margin-right: 5%;
+    text-align: end;
+    font-size: 0.8em;
+}
+
+.menu-item {
+    display: flex !important;
+    flex-direction: row;
+}
+
+.menu-item-text {
+    margin-left: 4%;
+}
+
+.menu-item-icon {
+    align-self: center;
+}
+
+.menu-item-arrow {
+    flex: 1;
+    align-self: center;
+    text-align: end;
+    font-size: 1em;
+    margin-right: 5%;
+}
+

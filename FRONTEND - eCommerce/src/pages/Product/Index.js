@@ -4,17 +4,18 @@ import Banner from 'components/Banner/Banner'
 import NewClothesList from 'components/NewClothesList/NewClothesList'
 import 'pages/Home/Home.css'
 
-const Home = () => {
+const Product = () => {
     return (  
         <div>
-            <Header/>
+            <Header
+                burguerMenu={false}
+            />
             <div className="header-split"></div>
-            <div className="home-container">
-                <Banner/>
-                <NewClothesList/>
+            <div className="product-container">
+                
             </div>
         </div>
     );
 }
  
-export default Home;
+export default Product;

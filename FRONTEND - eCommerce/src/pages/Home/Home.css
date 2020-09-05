@@ -1,0 +1,10 @@
+.header-split {
+    height: 72px;
+}
+
+@media only screen and (min-width: 700px) {
+    .home-container {
+        margin: 0 15%;
+    }
+}
+
