@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using eCommerce.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -25,6 +25,24 @@ namespace eCommerce.Infrastructure.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(30)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.Company)
+                .WithMany(p => p.User)
+                .HasForeignKey(d => d.CompanyId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_User_Company");
+
+            entity.HasOne(d => d.State)
+                .WithMany(p => p.User)
+                .HasForeignKey(d => d.StateId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_User_State");
+
+            entity.HasOne(d => d.UserType)
+                .WithMany(p => p.User)
+                .HasForeignKey(d => d.UserTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_User_UserType");
         }
     }
 }

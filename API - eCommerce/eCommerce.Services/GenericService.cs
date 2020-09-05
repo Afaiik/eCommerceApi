@@ -4,46 +4,47 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace eCommerce.Services
 {
     public class GenericService<TEntity> : IGenericService<TEntity> where TEntity : class
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<TEntity> _tRepository;
 
-        public GenericService(IUnitOfWork unitOfWork)
+        public GenericService(IGenericRepository<TEntity> tRepository)
         {
-            _unitOfWork = unitOfWork;
+            _tRepository = tRepository;
         }
 
-        public void Delete(object id)
+        public async Task Delete(object id)
         {
-            throw new NotImplementedException();
+            await _tRepository.Delete(id);
         }
 
-        public void Delete(TEntity entityToDelete)
+        public async Task Delete(TEntity entityToDelete)
         {
-            throw new NotImplementedException();
+            await _tRepository.Delete(entityToDelete);
         }
 
-        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
+        public async Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
-            throw new NotImplementedException();
+            return await _tRepository.Get(filter, orderBy, includeProperties);
         }
 
-        public TEntity GetByID(object id)
+        public async Task<TEntity> GetById(object id)
         {
-            throw new NotImplementedException();
+            return await _tRepository.GetById(id);
         }
 
-        public void Insert(TEntity entity)
+        public async Task Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+            await _tRepository.Insert(entity);
         }
 
-        public void Update(TEntity entityToUpdate)
+        public async Task Update(TEntity entityToUpdate)
         {
-            throw new NotImplementedException();
+            await _tRepository.Update(entityToUpdate);
         }
     }
 }

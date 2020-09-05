@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using eCommerce.Core.Entities;
 using eCommerce.Core.Interfaces.Repositories;
 using eCommerce.Infrastructure.Repositories;
 using System;
@@ -12,6 +12,7 @@ namespace eCommerce.Infrastructure.Data
     {
         private AppDbContext _context;
         private UserRepository _userRepository;
+        private StateRepository _stateRepository;
         
         public UnitOfWork(AppDbContext context)
         {
@@ -20,6 +21,9 @@ namespace eCommerce.Infrastructure.Data
 
         public IUserRepository Users => _userRepository = _userRepository ?? new UserRepository(_context);
 
+        public IStateRepository States => _stateRepository = _stateRepository ?? new StateRepository(_context);
+
+        
         public void SaveChanges()
         {
             _context.SaveChanges();

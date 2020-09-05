@@ -8,6 +8,7 @@ namespace eCommerce.Core.Interfaces.Repositories
     public interface IUnitOfWork : IDisposable
     {
         IUserRepository Users { get; }
+        IStateRepository States { get; }
 
         Task<int> SaveChangesAsync();
 

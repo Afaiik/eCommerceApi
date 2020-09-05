@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using eCommerce.Core.Entities;
 using eCommerce.Api.Models;
 using AutoMapper;
 using System;
@@ -14,9 +14,11 @@ namespace eCommerce.Api.Mapping
         {
             // Domain to Resource
             CreateMap<User, UserModel>();
+            CreateMap<State, StateModel>();
 
             // Resource to Domain
             CreateMap<UserModel, User>();
+            CreateMap<State, StateModel>();
         }
     }
 }
